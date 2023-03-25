@@ -39,6 +39,8 @@ class _CalculadoraAppState extends State<CalculadoraApp> {
 
     inss = salarioBruto * taxaInss;
 
+    salarioBruto = salarioBruto - inss;
+
     if (salarioBruto <= 1903.98) {
       taxaIr = 0.0;
     } else if (salarioBruto <= 2826.65){
@@ -51,7 +53,7 @@ class _CalculadoraAppState extends State<CalculadoraApp> {
       taxaIr = 0.275;
     }
 
-    ir = (salarioBruto - inss) * taxaIr;
+    ir = salarioBruto * taxaIr;
 
     setState(() => salarioLiquido = salarioBruto - inss - ir);
   }
